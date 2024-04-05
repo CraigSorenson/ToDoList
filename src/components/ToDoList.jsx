@@ -12,7 +12,8 @@ import { exportJSON, FileInput } from "../utility/Utility";
 const ToDoList = () => {
   const [todoInput, setTodoInput] = useState("");
   const [addItemEnabled, setAddItemEnabled] = useState(true);
-  const [list, setList] = useState([]);
+  // loading localstorage from a useEffect with empty dependency array would not work. Had to do it here
+  const [list, setList] = useState(JSON.parse(localStorage.getItem("toDoList")) ?? []);
 
   const inputRef = useRef();
 
@@ -56,8 +57,19 @@ const ToDoList = () => {
   };
 
   useEffect(() => {
+    localStorage.setItem("toDoList", JSON.stringify(list));
+  }, [list])
+
+  useEffect(() => {
     setAddItemEnabled(todoInput == "");
   }, [todoInput]);
+
+  // useEffect(() => {
+  //   const storedList = JSON.parse(localStorage.getItem('toDoList'));
+  //   if (storedList) {
+  //     setList(storedList);
+  //   }
+  // }, [])
 
   return (
     <div className="toDoList">
@@ -76,38 +88,44 @@ const ToDoList = () => {
           value={todoInput}
         />
         <button onClick={handleAddListItem} disabled={addItemEnabled}>
-          <FaPlus />
+          <FaPlus className="icon" />
         </button>
         <button onClick={() => handleFileExportJSON()}>
-          <FaFileExport />
+          <FaFileExport className="icon" />
         </button>
         <FileInput callback={setList} />
       </div>
-      <ul className="itemList">
+      <div className="itemList">
         {list.map((item) => {
           return (
-            <li key={item.uuid} className="listItem">
-              <div>
-                <p>Created: {new Date(item.created).toLocaleString()}</p>
-                <p>Due: {new Date(item.dueDate).toLocaleString()}</p>
-                <p>Note: {item.note}</p>
-                <p>Complete: {item.complete ? "Yes" : "No"}</p>
-                <p>ID: {item.uuid}</p>
+            <div key={item.uuid} className="listItem">
+              <div className="card">
+                {/* <p>ID: {item.uuid}</p> */}
+                <div className="dates">
+                  <p>Created: {new Date(item.created).toLocaleString()}</p>
+                  <p>Due: {new Date(item.dueDate).toLocaleString()}</p>
+                </div>
+                <p className="note">{item.note}</p>
+                <div className="cardButtons">
+                  <button onClick={() => handleDeleteItem(item.uuid)}>
+                    <FaTrashAlt className="icon" />
+                  </button>
+                  <p className={item.complete ? "complete" : "incomplete"}>
+                    Complete: {item.complete ? "Yes" : "No"}
+                  </p>
+                  <button
+                    onClick={() =>
+                      handleMarkComplete(item.uuid, !item.complete)
+                    }
+                  >
+                    <FaCheck className="icon" />
+                  </button>
+                </div>
               </div>
-              <div>
-                <button onClick={() => handleDeleteItem(item.uuid)}>
-                  <FaTrashAlt />
-                </button>
-                <button
-                  onClick={() => handleMarkComplete(item.uuid, !item.complete)}
-                >
-                  <FaCheck />
-                </button>
-              </div>
-            </li>
+            </div>
           );
         })}
-      </ul>
+      </div>
     </div>
   );
 };

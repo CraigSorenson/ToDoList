@@ -23,13 +23,18 @@ Basic working todo list with ability to add and delete notes.
 * after creating some helper functions such as exportJSON, FileInput, et cetera, moved them to seperate Utility.jsx
 * minor CSS mods but still needs heavy work
 
+### 20240405-1800
+* minor changes to card (note) display 
+* CSS improvements but still needs work, looking decent on mobile
+* Keep list in localstorage to persist between sessions
+
 ## Todo
 * confirmation on load JSON if existing list is populated
 * Prettify load JSON functionality
 * Add ability to set due date
 * Look into using textarea instead of input for notes
 * Show hours/days since creation
-* Fix CSS and make prettier; mobile friendly
+* Fix CSS and make prettier
 * Export list as text
 
 ## License
