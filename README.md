@@ -17,11 +17,19 @@ Basic working todo list with ability to add and delete notes.
 * Code cleanup
 * Export list as JSON
 
+### 20240405-xxxx
+* switched from crypto.randomUUID to uuidv4 due to the former not working on mobile device without a secure connection
+* Import list as JSON implemented
+* after creating some helper functions such as exportJSON, FileInput, et cetera, moved them to seperate Utility.jsx
+* minor CSS mods but still needs heavy work
+
 ## Todo
-* Import list as JSON
+* confirmation on load JSON if existing list is populated
+* Prettify load JSON functionality
 * Add ability to set due date
+* Look into using textarea instead of input for notes
 * Show hours/days since creation
-* Fix CSS and make prettier
+* Fix CSS and make prettier; mobile friendly
 * Export list as text
 
 ## License
