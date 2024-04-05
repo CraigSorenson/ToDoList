@@ -1,0 +1,38 @@
+body {
+  background-color: hsl(150, 50%, 50%);
+}
+
+button,
+input {
+  background-color: hsl(150, 50%, 70%);
+  font-size: 2em;
+}
+
+button:hover {
+  background-color: hsl(150, 50%, 30%);
+}
+
+.toDoList {
+  display: flex;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  justify-content: left;
+  align-items: center;
+}
+
+.itemList {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 60%;
+  min-width: 300px;
+  max-width:800px;
+}
+.itemList > li > button {
+  align-items: right;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+}
