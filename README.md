@@ -17,7 +17,7 @@ Basic working todo list with ability to add and delete notes.
 * Code cleanup
 * Export list as JSON
 
-### 20240405-xxxx
+### 20240405-1113
 * switched from crypto.randomUUID to uuidv4 due to the former not working on mobile device without a secure connection
 * Import list as JSON implemented
 * after creating some helper functions such as exportJSON, FileInput, et cetera, moved them to seperate Utility.jsx
