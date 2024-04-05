@@ -6,6 +6,7 @@ button,
 input {
   background-color: hsl(150, 50%, 70%);
   font-size: 2em;
+  padding-top: .25em;
 }
 
 button:hover {
