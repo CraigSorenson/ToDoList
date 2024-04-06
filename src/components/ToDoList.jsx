@@ -13,7 +13,9 @@ const ToDoList = () => {
   const [todoInput, setTodoInput] = useState("");
   const [addItemEnabled, setAddItemEnabled] = useState(true);
   // loading localstorage from a useEffect with empty dependency array would not work. Had to do it here
-  const [list, setList] = useState(JSON.parse(localStorage.getItem("toDoList")) ?? []);
+  const [list, setList] = useState(
+    JSON.parse(localStorage.getItem("toDoList")) ?? []
+  );
 
   const inputRef = useRef();
 
@@ -58,12 +60,13 @@ const ToDoList = () => {
 
   useEffect(() => {
     localStorage.setItem("toDoList", JSON.stringify(list));
-  }, [list])
+  }, [list]);
 
   useEffect(() => {
     setAddItemEnabled(todoInput == "");
   }, [todoInput]);
 
+  // This would not work...kept blanking localstorage at startup
   // useEffect(() => {
   //   const storedList = JSON.parse(localStorage.getItem('toDoList'));
   //   if (storedList) {
@@ -75,24 +78,27 @@ const ToDoList = () => {
     <div className="toDoList">
       <h1>Cygnus ToDo List</h1>
       <div className="addItem">
-        <input
-          id="toDoITem"
-          name="todoItem"
-          type="text"
-          autoFocus
-          ref={inputRef}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") handleAddListItem();
-          }}
-          onChange={handleListItemInput}
-          value={todoInput}
-        />
-        <button onClick={handleAddListItem} disabled={addItemEnabled}>
-          <FaPlus className="icon" />
-        </button>
-        <button onClick={() => handleFileExportJSON()}>
-          <FaFileExport className="icon" />
-        </button>
+        <div>
+          <input
+            id="toDoITem"
+            name="todoItem"
+            type="text"
+            autoFocus
+            ref={inputRef}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleAddListItem();
+            }}
+            onChange={handleListItemInput}
+            value={todoInput}
+          />
+            <button onClick={handleAddListItem} disabled={addItemEnabled}>
+              <FaPlus className="icon" />
+            </button>
+            <button onClick={() => handleFileExportJSON()}>
+              <FaFileExport className="icon" />
+            </button>
+
+        </div>
         <FileInput callback={setList} />
       </div>
       <div className="itemList">

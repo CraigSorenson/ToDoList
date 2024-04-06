@@ -28,8 +28,14 @@ Basic working todo list with ability to add and delete notes.
 * CSS improvements but still needs work, looking decent on mobile
 * Keep list in localstorage to persist between sessions
 
+### 20240405-1948
+* added CSS from Eric Furhmann, https://www.viget.com/articles/styling-native-file-upload-input-field/
+to make the file selector look a little better.
+* Look, the rest of the CSS is mostly cow pie. Ugh.
+* Committing prior to switching to a merge method for loading from file
+
 ## Todo
-* confirmation on load JSON if existing list is populated
+* confirmation on load JSON if existing list is populated OR merge with existing data
 * Prettify load JSON functionality
 * Add ability to set due date
 * Look into using textarea instead of input for notes
