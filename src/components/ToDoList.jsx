@@ -80,7 +80,7 @@ const ToDoList = () => {
       <div className="addItem">
         <div>
           <input
-            id="toDoITem"
+            id="toDoItem"
             name="todoItem"
             type="text"
             autoFocus
@@ -91,15 +91,14 @@ const ToDoList = () => {
             onChange={handleListItemInput}
             value={todoInput}
           />
-            <button onClick={handleAddListItem} disabled={addItemEnabled}>
+          {/* <button onClick={handleAddListItem} disabled={addItemEnabled}>
               <FaPlus className="icon" />
-            </button>
-            <button onClick={() => handleFileExportJSON()}>
-              <FaFileExport className="icon" />
-            </button>
-
+            </button> */}
         </div>
-        <FileInput callback={setList} />
+        <button onClick={() => handleFileExportJSON()}>
+          <FaFileExport className="icon" />
+        </button>
+        <FileInput callback={setList} list={list}/>
       </div>
       <div className="itemList">
         {list.map((item) => {
@@ -108,8 +107,8 @@ const ToDoList = () => {
               <div className="card">
                 {/* <p>ID: {item.uuid}</p> */}
                 <div className="dates">
-                  <p>Created: {new Date(item.created).toLocaleString()}</p>
-                  <p>Due: {new Date(item.dueDate).toLocaleString()}</p>
+                  <p>Created {new Date(item.created).toLocaleString()}</p>
+                  <p>Due {new Date(item.dueDate).toLocaleString()}</p>
                 </div>
                 <p className="note">{item.note}</p>
                 <div className="cardButtons">
@@ -117,7 +116,7 @@ const ToDoList = () => {
                     <FaTrashAlt className="icon" />
                   </button>
                   <p className={item.complete ? "complete" : "incomplete"}>
-                    Complete: {item.complete ? "Yes" : "No"}
+                    {item.complete ? "Complete" : "Incomplete"}
                   </p>
                   <button
                     onClick={() =>

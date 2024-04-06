@@ -47,12 +47,22 @@ const makeFileDateTime = (ms) => {
     fileReader.readAsText(file);
   });
 
+  const mergeLists = (oldList=[], newList=[]) => {
+    // we prefer items from the newer list if IDs conflict
+    const newListIDs = new Set(newList.map(item => item.uuid));
+    const result = oldList.filter(item => 
+      (newListIDs.has(item.uuid) === false)
+    )  
+    return [...result, ...newList];
+  }
+
   export const FileInput = (props) => {
-    const {callback} = props;
+    const {callback, list} = props;
     const onChange = async (event) => {
       if (event.target.files) {
         const parsedData = await readJsonFile(event.target.files[0]);
-        callback(parsedData.data);
+        const merged = mergeLists(parsedData.data, list); 
+        callback(merged);
       }
     };
   

@@ -34,13 +34,16 @@ to make the file selector look a little better.
 * Look, the rest of the CSS is mostly cow pie. Ugh.
 * Committing prior to switching to a merge method for loading from file
 
+### 20240405-2330
+* revamped CSS, still ugly behind the scenes but looks better up front
+* removed add item button, submission by hitting 'return' good enough?
+* Restore from file merges with existing list favoring current list of file list if there is an id conflict.
+
 ## Todo
-* confirmation on load JSON if existing list is populated OR merge with existing data
 * Prettify load JSON functionality
 * Add ability to set due date
 * Look into using textarea instead of input for notes
 * Show hours/days since creation
-* Fix CSS and make prettier
 * Export list as text
 
 ## License
