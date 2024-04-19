@@ -4,7 +4,7 @@ const makeFileDateTime = (ms) => {
     let dateStamp = "";
     dateStamp += dateObj.getFullYear().toString();
     dateStamp += (dateObj.getMonth() + 1).toString().padStart(2, "0");
-    dateStamp += (dateObj.getDay() + 1).toString().padStart(2, "0");
+    dateStamp += dateObj.getDate().toString().padStart(2, "0");
     dateStamp += "_";
     dateStamp += dateObj.getHours().toString().padStart(2, "0");
     dateStamp += dateObj.getMinutes().toString().padStart(2, "0");

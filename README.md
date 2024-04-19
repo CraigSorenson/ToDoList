@@ -39,6 +39,9 @@ to make the file selector look a little better.
 * removed add item button, submission by hitting 'return' good enough?
 * Restore from file merges with existing list favoring current list of file list if there is an id conflict.
 
+### 20240418_1900
+* Fixed bug in MakeFileDateTime (Utility.jsx) that was assigning the numeric value for the day of the week instead of the date when naming JSON data export file.
+
 ## Todo
 * Prettify load JSON functionality
 * Add ability to set due date
